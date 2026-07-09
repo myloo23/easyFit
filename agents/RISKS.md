@@ -13,6 +13,7 @@
 | Route diagnostics leak precise location data | very high | medium | Detect route availability without logging, displaying, exporting, or persisting GPS coordinates by default |
 | Real Apple Health export accidentally committed | very high | medium | Keep exports in ignored private paths; audit before commits; never use real exports as fixtures |
 | Large Apple Health export exhausts memory | high | medium | Use streaming XML parsing and batched local writes; avoid whole-file parsing by default |
+| Step 1A parser passes synthetic fixtures but fails on real export variation | high | medium | Validate against the founder's ignored real export before designing SQLite ingestion, normalization, API, or dashboard |
 | Manual export workflow becomes stale or inconvenient | medium | high | Use it for fast local value, then add native iOS synchronization later |
 | Dashboard couples to raw Apple export XML | high | medium | Keep importer, raw layer, normalizer, API, and dashboard boundaries separate |
 | Derived metrics imply medical certainty | high | medium | UX labeling, methodology notes, limitations |

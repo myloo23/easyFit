@@ -1,5 +1,31 @@
 # Session Log
 
+## 2026-07-09 - Step 1A Apple Health inventory importer
+
+Repository inspection:
+
+- Working directory: repository root.
+- Git branch: `main` tracking `origin/main`.
+- Local `python3`: 3.14.6.
+- No expected ignored private export path or `export.zip` was present.
+
+Work completed:
+
+- Clarified Phase 1 milestone order: Step 1A streaming inventory, Step 1B raw SQLite ingestion, Step 1C normalization/API/dashboard.
+- Created `services/importer/` Python package with minimum Python 3.12, standard-library production parser, and pytest/ruff/mypy development tooling.
+- Implemented CLI: `python -m easyfit_importer inventory --input personal-health-data/export.zip`.
+- Implemented safe ZIP and directory input resolution without extracting the full archive.
+- Implemented streaming `xml.etree.ElementTree.iterparse` inventory with element clearing.
+- Aggregated safe record, workout, activity summary, route-file, unknown-element, warning, and parse-statistics summaries.
+- Added synthetic fixtures under `fixtures/synthetic/apple-health/`.
+- Added tests for input resolution, timezone-aware date parsing, aggregation, workouts, route detection, privacy, and determinism.
+- Did not create SQLite storage, API, dashboard, analytics, or iOS application code.
+- Did not validate against real data because no real export was available locally.
+
+Next recommended task:
+
+- Place the Apple Health export ZIP at `personal-health-data/export.zip` and run Step 1A real-data validation before implementing raw SQLite ingestion.
+
 ## 2026-07-09 - Foundation bootstrap
 
 Repository inspection:

@@ -11,6 +11,7 @@
 - What synthetic fixture format should represent workouts and streams before real data is stored?
 - What exact structure does the founder's current Apple Health export contain?
 - How should route GPX files be linked to `Workout` rows in the real export?
+- Which malformed date, unknown element, or auxiliary file patterns appear in the founder's real export when Step 1A runs locally?
 - Which Python local API framework should be used after the inventory milestone?
 - Does the founder's real iPhone support the Phase 1 iOS 17.0 minimum deployment target?
 - Which full Xcode version will be installed or selected for Phase 1 implementation?
@@ -46,3 +47,4 @@ These questions do not block the documentation bootstrap. Many should be answere
 - The first local database recommendation is SQLite.
 - The first importer and local API direction is Python.
 - No cloud backend, App Store distribution, paid infrastructure, Docker, or authentication is required for the first local milestone.
+- Step 1A is parser and safe inventory only; raw SQLite ingestion remains Step 1B, followed by Step 1C normalization/API/dashboard.

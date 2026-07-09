@@ -101,6 +101,11 @@ export_cda.xml
 *.healthkit.ndjson
 *.health-export.zip
 export.zip
+!fixtures/
+!fixtures/synthetic/
+!fixtures/synthetic/**/
+!fixtures/synthetic/**/export.xml
+!fixtures/synthetic/**/export_cda.xml
 !fixtures/synthetic/**/*.gpx
 !fixtures/synthetic/**/*.tcx
 !fixtures/synthetic/**/*.fit

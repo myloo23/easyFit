@@ -16,3 +16,6 @@
 - Added Apple Health export format research.
 - Added Phase 1 Local Health Import specification.
 - Updated roadmap and project memory for personal-local-first implementation order.
+- Added Step 1A Apple Health export inventory importer under `services/importer/`.
+- Added synthetic Apple Health-like fixtures and importer tests.
+- Recorded Step 1A/1B/1C milestone sequence: inventory first, then raw SQLite ingestion, then normalization/API/dashboard.

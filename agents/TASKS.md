@@ -24,13 +24,14 @@ Priority: P0 is highest.
 
 - [ ] P0 Review `.gitignore` protections before placing any real Apple Health export in the workspace.
 - [ ] P0 Create ignored private local path for the founder's Apple Health export.
-- [ ] P0 Implement Python archive/folder locator for Apple Health export.
-- [ ] P0 Implement streaming parser for `export.xml`.
-- [ ] P0 Produce safe inventory report: total record count, record types, counts by type, date ranges, units, source categories, workout count, running workout count, and route-file presence.
-- [ ] P0 Ensure inventory report excludes raw samples, GPS coordinates, full metadata dictionaries, and personal identifiers.
-- [ ] P0 Add deterministic re-run behavior for the same export.
-- [ ] P1 Add SQLite-backed local import state after the streaming inventory path is proven.
-- [ ] P1 Create synthetic fixture strategy based on representative structures, not real data.
+- [x] P0 Implement Python archive/folder locator for Apple Health export.
+- [x] P0 Implement streaming parser for `export.xml`.
+- [x] P0 Produce safe inventory report: total record count, record types, counts by type, date ranges, units, source categories, workout count, running workout count, and route-file presence.
+- [x] P0 Ensure inventory report excludes raw samples, GPS coordinates, full metadata dictionaries, and personal identifiers.
+- [x] P0 Add deterministic re-run behavior for the same export.
+- [x] P1 Create synthetic fixture strategy based on representative structures, not real data.
+- [ ] P0 Run Step 1A importer against the founder's real export after it is placed at `personal-health-data/export.zip`.
+- [ ] P1 Add SQLite-backed local import state after the streaming inventory path is proven on real data.
 
 ## Phase 2 - Local Data Model and Normalization
 

@@ -4,11 +4,11 @@ Last updated: 2026-07-09
 
 ## Current phase
 
-Phase 0 - Foundation.
+Phase 1 - Local Apple Health Import and Inventory.
 
 ## Current milestone
 
-Strategy pivot accepted; ready to implement Phase 1 Local Apple Health Import and Inventory.
+Step 1A - Streaming Apple Health export inventory importer implemented against synthetic fixtures.
 
 ## Completed
 
@@ -27,19 +27,25 @@ Strategy pivot accepted; ready to implement Phase 1 Local Apple Health Import an
 - ADR-0002 accepted: local analytics before native HealthKit synchronization.
 - Apple Health export format research note created.
 - Phase 1 Local Health Import specification created.
+- Step 1A milestone clarified: prove streaming parser and privacy-safe inventory before raw SQLite ingestion.
+- Python importer package created at `services/importer/`.
+- Synthetic Apple Health-like fixtures created under `fixtures/synthetic/apple-health/`.
+- Importer can resolve `export.zip` or an extracted export directory, stream `export.xml`, detect route file presence by filename only, and produce safe human/JSON inventory summaries.
+- Production parser currently uses the Python standard library and no runtime dependencies.
+- Development tooling for the importer is pytest, ruff, and mypy.
 
 ## In progress
 
-- Preparing for local Apple Health export import and inventory implementation.
+- Waiting for the founder's real Apple Health export to be placed in an ignored private local path for Step 1A real-data validation.
 
 ## Blocked
 
-- No implementation blocker for local import planning.
+- Real-data validation is blocked until `personal-health-data/export.zip` exists locally.
 - Native iOS automation remains deferred; previous Xcode/signing/iPhone readiness gaps still apply when that work resumes.
 
 ## Next recommended task
 
-Implement the Local Health Data Inventory milestone: create a Python streaming importer that reads a real Apple Health export from an ignored private local path and produces a safe summary of record counts, types, date ranges, units, workouts, running workouts, and route-file presence.
+Place the Apple Health export ZIP at `personal-health-data/export.zip`, then run the Step 1A importer for real-data validation. After the parser is proven on real data, proceed to Step 1B raw SQLite ingestion.
 
 ## Known risks
 

@@ -12,6 +12,17 @@ from easyfit_importer.models import RouteFileSummary
 
 ROUTE_EXTENSIONS = {".gpx", ".tcx", ".fit"}
 
+EXCLUDED_XML_BASENAMES = {
+    "export_cda.xml",
+}
+
+EXCLUDED_XML_KEYWORDS = {
+    "clinical",
+    "electrocardiogram",
+    "ecg",
+    "audiogram",
+}
+
 
 class InputResolutionError(Exception):
     """Raised when an Apple Health export input cannot be safely resolved."""
@@ -69,13 +80,7 @@ def _resolve_zip(path: Path) -> ResolvedInput:
             if unsafe:
                 raise InputResolutionError("Archive contains unsafe member paths and was not read.")
 
-            candidates = [name for name in names if PurePosixPath(name).name == "export.xml"]
-            if not candidates:
-                raise InputResolutionError("Archive does not contain export.xml.")
-            if len(candidates) > 1:
-                raise InputResolutionError("Archive contains multiple export.xml candidates.")
-
-            member = candidates[0]
+            member = _select_main_export_xml(names)
             info = archive.getinfo(member)
             route_summary = _route_summary_from_names(names)
             identity = _hash_zip_member(archive, member)
@@ -93,14 +98,13 @@ def _resolve_zip(path: Path) -> ResolvedInput:
 
 
 def _resolve_directory(path: Path) -> ResolvedInput:
-    candidates = sorted(candidate for candidate in path.rglob("export.xml") if candidate.is_file())
-    if not candidates:
-        raise InputResolutionError("Directory does not contain export.xml.")
-    if len(candidates) > 1:
-        raise InputResolutionError("Directory contains multiple export.xml candidates.")
+    all_files = sorted(candidate for candidate in path.rglob("*") if candidate.is_file())
+    relative_names = [candidate.relative_to(path).as_posix() for candidate in all_files]
 
-    export_xml = candidates[0]
-    route_names = [candidate.name for candidate in path.rglob("*") if candidate.is_file()]
+    selected_name = _select_main_export_xml(relative_names)
+    export_xml = path / selected_name
+    route_names = [candidate.name for candidate in all_files]
+
     return ResolvedInput(
         kind="directory",
         display_name="Apple Health export directory",
@@ -109,6 +113,53 @@ def _resolve_directory(path: Path) -> ResolvedInput:
         route_file_summary=_route_summary_from_names(route_names),
         _path=export_xml,
     )
+
+
+def _select_main_export_xml(candidates: list[str]) -> str:
+    xml_candidates = [
+        candidate
+        for candidate in candidates
+        if PurePosixPath(candidate).suffix.lower() == ".xml"
+    ]
+
+    exact_matches = [
+        candidate
+        for candidate in xml_candidates
+        if PurePosixPath(candidate).name.lower() == "export.xml"
+    ]
+
+    if len(exact_matches) == 1:
+        return exact_matches[0]
+
+    if len(exact_matches) > 1:
+        raise InputResolutionError(
+            "Input contains multiple canonical export.xml candidates."
+        )
+
+    plausible_candidates = []
+
+    for candidate in xml_candidates:
+        basename = PurePosixPath(candidate).name.lower()
+
+        if basename in EXCLUDED_XML_BASENAMES:
+            continue
+
+        if any(keyword in basename for keyword in EXCLUDED_XML_KEYWORDS):
+            continue
+
+        plausible_candidates.append(candidate)
+
+    if not plausible_candidates:
+        raise InputResolutionError(
+            "Input does not contain a plausible main Apple Health export XML."
+        )
+
+    if len(plausible_candidates) > 1:
+        raise InputResolutionError(
+            "Input contains multiple ambiguous main export XML candidates."
+        )
+
+    return plausible_candidates[0]
 
 
 def _is_unsafe_archive_name(name: str) -> bool:

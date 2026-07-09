@@ -38,8 +38,48 @@ def test_resolve_zip_input(tmp_path: Path) -> None:
         assert export_xml.read(5) == b"<?xml"
 
 
+def test_resolve_localized_export_xml_in_zip(tmp_path: Path) -> None:
+    archive_path = tmp_path / "localized-export.zip"
+
+    with zipfile.ZipFile(archive_path, "w") as archive:
+        archive.writestr(
+            "apple_health_export/exportálás.xml",
+            b"<?xml version='1.0'?><HealthData />",
+        )
+        archive.writestr(
+            "apple_health_export/export_cda.xml",
+            b"<?xml version='1.0'?><ClinicalDocument />",
+        )
+
+    resolved = resolve_input(archive_path)
+
+    assert resolved.kind == "zip"
+    with resolved.open_export_xml() as export_xml:
+        assert b"HealthData" in export_xml.read()
+
+
+def test_rejects_ambiguous_localized_xml_candidates(tmp_path: Path) -> None:
+    archive_path = tmp_path / "ambiguous-export.zip"
+
+    with zipfile.ZipFile(archive_path, "w") as archive:
+        archive.writestr(
+            "apple_health_export/egészség-export.xml",
+            b"<?xml version='1.0'?><HealthData />",
+        )
+        archive.writestr(
+            "apple_health_export/gesundheit-export.xml",
+            b"<?xml version='1.0'?><HealthData />",
+        )
+
+    with pytest.raises(
+        InputResolutionError,
+        match="multiple ambiguous main export XML candidates",
+    ):
+        resolve_input(archive_path)
+
+
 def test_missing_export_xml(tmp_path: Path) -> None:
-    with pytest.raises(InputResolutionError, match="export.xml"):
+    with pytest.raises(InputResolutionError, match="plausible main Apple Health export XML"):
         resolve_input(tmp_path)
 
 

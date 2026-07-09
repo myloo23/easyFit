@@ -18,12 +18,32 @@ Health data is highly sensitive. Privacy and security are product requirements.
 
 - Use synthetic fixtures by default.
 - If real-device diagnostics are needed, keep outputs local and excluded from Git.
+- If real Apple Health exports are needed, keep them local in ignored private paths only. Never commit `export.xml`, `export_cda.xml`, workout route files, local health databases, or raw import diagnostics.
 - The root `.gitignore` must protect common local health exports, workout route files, private diagnostics, local health databases, credentials, certificates, provisioning profiles, and environment files.
 - Synthetic fixtures may be committed under an explicit synthetic fixture path when they contain no real personal health, workout, route, credential, or diagnostic data.
 - Safe examples such as `.env.example` may be committed when they contain no real secrets.
 - Prefer structured logs with redaction.
 - Avoid logging coordinates, full timestamps tied to sensitive events, or raw sample payloads unless explicitly in local debug mode.
 - Keep secrets in platform keychains, local environment files excluded from Git, or managed secret stores.
+
+## Local Apple Health export handling
+
+The current near-term strategy uses a manual Apple Health export for local analytics. This is sensitive personal data and must remain on the founder's Mac.
+
+Allowed in Git:
+
+- Documentation about safe import behavior.
+- Synthetic fixtures that are not derived from real personal data unless explicitly reviewed.
+- Safe aggregate summaries when they contain no raw samples, coordinates, full metadata dictionaries, or personal identifiers.
+
+Forbidden in Git:
+
+- Apple Health export archives.
+- `export.xml` or `export_cda.xml`.
+- GPX, TCX, FIT, or route files from real workouts.
+- Local SQLite or other health-data databases.
+- Raw parsed records.
+- Diagnostic dumps containing raw values, timestamps tied to individual sensitive events, coordinates, or full metadata.
 
 ## Repository visibility
 

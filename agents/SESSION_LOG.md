@@ -49,6 +49,27 @@ Next recommended task:
 
 - Prepare the local iOS environment, then scaffold `apps/ios/easyFitDiscovery/` according to ADR-0001 and the Phase 1 specification.
 
+## 2026-07-09 - Strategy pivot to local analytics first
+
+Repository inspection:
+
+- Working tree started clean on `main` tracking `origin/main`.
+- Repository contained planning and architecture only; no application code, database, dashboard, backend, or Xcode project.
+
+Work completed:
+
+- Recorded founder priority: get real Apple Health and Apple Watch data visible and analyzable on a Mac localhost dashboard as quickly as possible.
+- Created `agents/decisions/ADR-0002-local-analytics-first.md`.
+- Created `agents/research/apple-health-export-format.md`.
+- Created `agents/specifications/PHASE_1_LOCAL_HEALTH_IMPORT.md`.
+- Updated architecture, roadmap, current state, tasks, open questions, risks, privacy/security, decision log, and changelog.
+- Preserved ADR-0001 as the later native iOS automation path.
+- Did not create Python importer code, database files, Next.js app, Xcode project, backend, or dashboard.
+
+Next recommended task:
+
+- Implement the Local Health Data Inventory milestone with a Python streaming parser against a real Apple Health export kept in an ignored private local path.
+
 ## 2026-07-09 - Foundation review and first commit preparation
 
 Repository inspection:

@@ -9,6 +9,9 @@
 - Which HealthKit types require special entitlements, route handling, or OS-version gating?
 - How should raw HealthKit objects be serialized without losing source fidelity?
 - What synthetic fixture format should represent workouts and streams before real data is stored?
+- What exact structure does the founder's current Apple Health export contain?
+- How should route GPX files be linked to `Workout` rows in the real export?
+- Which Python local API framework should be used after the inventory milestone?
 - Does the founder's real iPhone support the Phase 1 iOS 17.0 minimum deployment target?
 - Which full Xcode version will be installed or selected for Phase 1 implementation?
 
@@ -34,3 +37,12 @@ These questions do not block the documentation bootstrap. Many should be answere
 - Repository layout will be a structured monorepo with `apps/`, `services/`, `packages/`, `infrastructure/`, `fixtures/synthetic/`, and `agents/`.
 - Phase 1 deployment target strategy is iOS 17.0 unless real founder-device testing proves this must change.
 - Phase 1 will persist only a redacted local diagnostic summary, not raw HealthKit samples or route points.
+
+## Resolved by ADR-0002
+
+- The first useful product will be a Mac-local localhost dashboard, not a native iOS app.
+- First real-data ingestion will use a manual Apple Health export.
+- Native iOS HealthKit synchronization is deferred.
+- The first local database recommendation is SQLite.
+- The first importer and local API direction is Python.
+- No cloud backend, App Store distribution, paid infrastructure, Docker, or authentication is required for the first local milestone.

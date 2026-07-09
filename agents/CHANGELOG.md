@@ -12,3 +12,7 @@
 - Added ADR-0001 for repository and Phase 1 application architecture.
 - Added Phase 1 HealthKit Discovery specification.
 - Updated project memory to reflect ADR-0001 decisions and local iOS environment readiness gaps.
+- Added ADR-0002 for local analytics before native HealthKit synchronization.
+- Added Apple Health export format research.
+- Added Phase 1 Local Health Import specification.
+- Updated roadmap and project memory for personal-local-first implementation order.

@@ -11,3 +11,4 @@ Major decisions should be recorded as ADR files in `agents/decisions/`.
 ## ADR index
 
 - `ADR-0001: Repository and Phase 1 Application Architecture` - accepted on 2026-07-09.
+- `ADR-0002: Local Analytics Before Native HealthKit Synchronization` - accepted on 2026-07-09.

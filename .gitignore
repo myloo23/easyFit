@@ -81,6 +81,7 @@ service-account*.json
 
 # Health, workout, and personal diagnostic data
 AppleHealthExport/
+apple_health_export/
 apple-health-export/
 health-export/
 healthkit-diagnostics/
@@ -89,6 +90,9 @@ personal-health-data/
 private-fixtures/
 diagnostics/private/
 exports/private/
+workout-routes/
+export.xml
+export_cda.xml
 *.gpx
 *.tcx
 *.fit

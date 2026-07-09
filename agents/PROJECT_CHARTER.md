@@ -31,11 +31,13 @@ The architecture must not be single-user-only. The eventual market may include s
 
 ## Near-term mandate
 
-The first technical milestone is a trustworthy data foundation, not a dashboard. The project must first discover which HealthKit data is actually available from the founder's real devices, document it, and design raw, normalized, and derived data layers before serious product UI work begins.
+The current founder priority is to make real Apple Health and Apple Watch data visible and analyzable on a Mac localhost dashboard as quickly as possible.
+
+The first technical milestone remains a trustworthy data foundation. The immediate implementation path is manual Apple Health export, local ingestion, raw storage, normalization, local API, and then a localhost dashboard. Native iOS HealthKit synchronization remains important but is now a later automation layer.
 
 ## Non-goals for the bootstrap phase
 
-- No dashboard implementation.
+- No final dashboard implementation before local import and inventory prove the data.
 - No arbitrary recovery or readiness score.
 - No medical claims.
 - No commercial subscription implementation.

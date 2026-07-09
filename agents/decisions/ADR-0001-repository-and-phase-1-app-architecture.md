@@ -1,11 +1,13 @@
 # ADR-0001: Repository and Phase 1 Application Architecture
 
-Status: Accepted
+Status: Accepted, implementation deferred by ADR-0002
 Date: 2026-07-09
+
+Note: This ADR remains valid for the later native iOS HealthKit discovery and synchronization path. ADR-0002 changes the current implementation order so local Apple Health export ingestion and localhost analytics come first.
 
 ## Context
 
-easyFit is in Phase 0 and is preparing for Phase 1: HealthKit Discovery. The first implementation must answer what Apple Health data is actually available from the founder's real devices. It must not become the production app, dashboard, backend, or analytics platform yet.
+At the time of this ADR, easyFit was in Phase 0 and preparing for a Phase 1 native HealthKit Discovery app. That iOS work must answer what Apple Health data is actually available from the founder's real devices when the native path resumes. It must not become the production app, dashboard, backend, or analytics platform.
 
 Research in `agents/research/2026-07-09-phase-1-ios-healthkit-architecture.md` confirmed that HealthKit requires native Apple platform capability/entitlement setup, user authorization, privacy usage descriptions, and careful handling of sensitive health and route data. Local environment inspection also found that full Xcode is not currently selected, no Apple Development signing identity was detected, and no iPhone was detected, so implementation requires environment setup before real-device validation.
 
@@ -31,7 +33,7 @@ easyFit/
 └── agents/
 ```
 
-Only `apps/ios/easyFitDiscovery/` should be created during the next implementation step. Other folders are architectural reservations and should be created only when useful.
+When the native iOS path resumes, only `apps/ios/easyFitDiscovery/` should be created for that step. Other folders are architectural reservations and should be created only when useful.
 
 Phase 1 app shape:
 

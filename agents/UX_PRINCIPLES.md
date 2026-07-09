@@ -19,4 +19,4 @@
 
 ## Early UX scope
 
-Phase 1 UX can be minimal and diagnostic. Its job is to support HealthKit discovery, permission validation, and data availability inspection, not polished dashboards.
+Phase 1 UX can be minimal and diagnostic. Its job is to support local Apple Health export inventory, safe data availability inspection, and later localhost dashboard decisions, not a polished consumer dashboard.

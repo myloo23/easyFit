@@ -11,8 +11,11 @@ Priority: P0 is highest.
 - [x] P0 Review Phase 0 foundation for quality, naming consistency, and current-state accuracy.
 - [x] P0 Create root `.gitignore` for expected stack, secrets, and local health-data protection.
 - [x] P0 Record public GitHub repository visibility as a project risk.
-- [ ] P0 Draft ADR-0001 for repository architecture and Phase 1 app layout.
-- [ ] P1 Define Phase 1 HealthKit discovery scope and permission rationale.
+- [x] P0 Research Apple HealthKit and current iOS platform requirements using primary sources.
+- [x] P0 Draft ADR-0001 for repository architecture and Phase 1 app layout.
+- [x] P1 Define Phase 1 HealthKit discovery scope and permission rationale.
+- [x] P1 Create Phase 1 HealthKit Discovery specification.
+- [ ] P0 Prepare local iOS environment: install/select full Xcode, configure Apple Development signing, and connect a real iPhone.
 
 ## Phase 1 - HealthKit Discovery
 
@@ -20,7 +23,8 @@ Priority: P0 is highest.
 - [ ] P0 Configure HealthKit capability and permission request flow.
 - [ ] P0 Build availability inspection for prioritized HealthKit types.
 - [ ] P0 Build diagnostics view for permissions, sample counts, sources, units, and date ranges.
-- [ ] P1 Add local redaction/export strategy for diagnostics if needed.
+- [ ] P0 Implement redacted local diagnostic summary persistence.
+- [ ] P1 Add optional redacted export strategy for diagnostics if needed.
 - [ ] P1 Update `HEALTHKIT_CATALOG.md` with real-device findings.
 
 ## Phase 2 - Data Foundation

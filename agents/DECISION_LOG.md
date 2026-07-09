@@ -10,4 +10,4 @@ Major decisions should be recorded as ADR files in `agents/decisions/`.
 
 ## ADR index
 
-No ADRs have been created yet.
+- `ADR-0001: Repository and Phase 1 Application Architecture` - accepted on 2026-07-09.

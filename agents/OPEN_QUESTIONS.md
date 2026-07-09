@@ -2,18 +2,15 @@
 
 ## Product
 
-- Which first user workflow should Phase 1 diagnostics optimize for: all HealthKit availability, running-focused availability, or marathon-preparation availability?
-- What is the minimum useful local report from the iOS discovery app?
 - How should the product phrase uncertainty so power users trust it without overwhelming casual users?
 
 ## Technical
 
-- What monorepo layout best supports Swift/iOS, Python backend/analytics, and later Next.js without adding unnecessary complexity?
-- What iOS deployment target is appropriate for the founder's device and likely market?
 - Which HealthKit types require special entitlements, route handling, or OS-version gating?
 - How should raw HealthKit objects be serialized without losing source fidelity?
 - What synthetic fixture format should represent workouts and streams before real data is stored?
-- Should Phase 1 persist diagnostics locally, export a redacted report, or only render in-app?
+- Does the founder's real iPhone support the Phase 1 iOS 17.0 minimum deployment target?
+- Which full Xcode version will be installed or selected for Phase 1 implementation?
 
 ## Data and analytics
 
@@ -29,3 +26,11 @@
 - Which third-party services, if any, are acceptable for analytics, crash reporting, and AI features?
 
 These questions do not block the documentation bootstrap. Many should be answered through research or real-device testing instead of asking the founder prematurely.
+
+## Resolved by ADR-0001
+
+- Phase 1 diagnostics will use a tiered strategy: foundational health/workout types first, running metrics and routes second, optional categories later.
+- The minimum useful local report is a redacted diagnostic summary with data-type states, counts, date ranges, units, safe source/device categories, and notes.
+- Repository layout will be a structured monorepo with `apps/`, `services/`, `packages/`, `infrastructure/`, `fixtures/synthetic/`, and `agents/`.
+- Phase 1 deployment target strategy is iOS 17.0 unless real founder-device testing proves this must change.
+- Phase 1 will persist only a redacted local diagnostic summary, not raw HealthKit samples or route points.

@@ -8,3 +8,7 @@
 - Added root `.gitignore` for expected future stack, secrets, and private health/workout data.
 - Normalized easyFit naming as the current working product and brand name.
 - Recorded public GitHub repository visibility as a project risk.
+- Added Phase 1 iOS and HealthKit architecture research note.
+- Added ADR-0001 for repository and Phase 1 application architecture.
+- Added Phase 1 HealthKit Discovery specification.
+- Updated project memory to reflect ADR-0001 decisions and local iOS environment readiness gaps.

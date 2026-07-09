@@ -8,7 +8,7 @@ Phase 0 - Foundation.
 
 ## Current milestone
 
-Foundation review and architecture-validation readiness.
+ADR-0001 accepted; ready to scaffold the Phase 1 HealthKit Discovery iOS app after local Xcode/signing setup.
 
 ## Completed
 
@@ -20,18 +20,21 @@ Foundation review and architecture-validation readiness.
 - Foundation quality review completed.
 - Root `.gitignore` created for the expected Swift/iOS, JavaScript/Next.js, Python, secrets, and local health-data workflow.
 - Public repository visibility recorded as a project risk.
+- Current Apple platform and HealthKit research completed using primary sources.
+- ADR-0001 accepted for repository architecture and Phase 1 app shape.
+- Phase 1 HealthKit Discovery specification created.
 
 ## In progress
 
-- Architecture validation planning for Phase 1 HealthKit discovery.
+- Preparing for Phase 1 implementation.
 
 ## Blocked
 
-- Phase 1 implementation is intentionally blocked until the HealthKit discovery plan and initial iOS project decisions are made.
+- Local environment is not yet ready for iOS implementation: full Xcode is not selected, no Apple Development signing identity was detected, and no iPhone was detected.
 
 ## Next recommended task
 
-Create ADR-0001 for repository architecture and Phase 1 app shape: monorepo layout, native iOS target location, minimum iOS/watchOS assumptions, and whether to scaffold only the iOS HealthKit discovery app before backend/web packages.
+Install/select full Xcode, configure Apple Development signing, connect a real iPhone, then scaffold `apps/ios/easyFitDiscovery/` according to ADR-0001 and `agents/specifications/PHASE_1_HEALTHKIT_DISCOVERY.md`.
 
 ## Known risks
 
@@ -41,3 +44,4 @@ Create ADR-0001 for repository architecture and Phase 1 app shape: monorepo layo
 - Derived metrics can mislead users if confidence and limitations are hidden.
 - Privacy mistakes in logs, exports, or third-party services would be high-impact.
 - The GitHub repository is public, so committed source and documentation are publicly visible after push.
+- Route diagnostics can leak sensitive location information unless default UI, logs, summaries, and exports exclude coordinates.

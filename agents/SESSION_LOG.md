@@ -20,6 +20,35 @@ Next recommended task:
 
 - Create ADR-0001 for repository architecture and Phase 1 HealthKit discovery app layout.
 
+## 2026-07-09 - ADR-0001 and Phase 1 architecture
+
+Repository inspection:
+
+- Working tree started clean on `main` tracking `origin/main`.
+- Repository contained Phase 0 docs, `.gitignore`, and no application code.
+
+Environment inspection:
+
+- macOS 26.5.1.
+- Active developer directory is Command Line Tools, not full Xcode.
+- Swift 6.3.2 is available.
+- iOS SDK and simulator runtimes are not discoverable until full Xcode is selected.
+- No Apple Development signing identity detected.
+- No connected iPhone detected.
+
+Work completed:
+
+- Researched current HealthKit and Xcode requirements using Apple primary sources.
+- Created `agents/research/2026-07-09-phase-1-ios-healthkit-architecture.md`.
+- Created and accepted `agents/decisions/ADR-0001-repository-and-phase-1-app-architecture.md`.
+- Created `agents/specifications/PHASE_1_HEALTHKIT_DISCOVERY.md`.
+- Updated architecture, current state, tasks, open questions, risks, and decision log.
+- Did not create an Xcode project or application code.
+
+Next recommended task:
+
+- Prepare the local iOS environment, then scaffold `apps/ios/easyFitDiscovery/` according to ADR-0001 and the Phase 1 specification.
+
 ## 2026-07-09 - Foundation review and first commit preparation
 
 Repository inspection:
